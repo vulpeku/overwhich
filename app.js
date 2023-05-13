@@ -17,7 +17,7 @@ const DISCORD_TOKEN = process.env.DISCORD_TOKEN
 const client = new Discord.Client({ intents: [Discord.GatewayIntentBits.Guilds]});
 
 client.commands = await generateCommands()
-await deployCommands()
+await deployCommands.deploy()
 client.on(Discord.Events.InteractionCreate, async interaction => {
   if(!interaction.isChatInputCommand()) return;
   client.commands.get(interaction.commandName).execute(interaction)
